@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSSAI — Your Smart Digital World</title>
+<style>
+:root{color-scheme:dark;--bg:#080b18;--panel:#11182b;--line:#263252;--purple:#8b5cf6;--blue:#38bdf8;--muted:#aab5d0}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:radial-gradient(circle at top right,#21164a 0,#080b18 42%);color:#f7f8ff}
+main{max-width:850px;margin:auto;padding:24px 16px 50px}.brand{font-size:28px;font-weight:800;letter-spacing:2px}.tag{color:var(--muted);margin-top:5px}
+.hero{padding:28px 0 20px}h1{font-size:clamp(28px,6vw,46px);line-height:1.12;margin:12px 0}p{color:var(--muted);line-height:1.55}
+.panel{background:linear-gradient(145deg,#141d35,#101426);border:1px solid var(--line);border-radius:18px;padding:18px;margin:16px 0;box-shadow:0 12px 35px #0005}
+label{display:block;font-weight:700;margin:13px 0 7px}textarea,select{width:100%;padding:13px;border-radius:11px;border:1px solid #354365;background:#090f20;color:white;font:inherit}
+textarea{min-height:120px;resize:vertical}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+button{margin-top:16px;width:100%;padding:14px;border:0;border-radius:12px;background:linear-gradient(90deg,var(--purple),#4263eb);color:white;font-size:16px;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tile{padding:15px;border:1px solid var(--line);border-radius:14px;background:#0c1325}.tile b{display:block;margin-bottom:6px}
+#result{white-space:pre-wrap;color:#e6eaff;line-height:1.6}.note{font-size:13px;color:#93a2c4}
+@media(max-width:560px){.grid,.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<div class="brand">DSSAI</div><div class="tag">Your Smart Digital World</div>
+<section class="hero"><h1>आपका AI क्रिएशन स्टूडियो</h1><p>एक आइडिया या प्रॉम्प्ट लिखें और अपनी वीडियो की शुरुआती योजना तैयार करें।</p></section>
+<div class="panel">
+<label for="prompt">अपना वीडियो प्रॉम्प्ट लिखें</label>
+<textarea id="prompt" placeholder="उदाहरण: एक गरीब किसान की मेहनत और सफलता पर भावुक कहानी बनाओ..."></textarea>
+<div class="grid">
+<div><label for="duration">वीडियो की लंबाई</label><select id="duration"><option>30 सेकंड</option><option>1 मिनट</option><option>3 मिनट</option><option>5 मिनट</option><option>10 मिनट</option><option>कस्टम</option></select></div>
+<div><label for="language">भाषा</label><select id="language"><option>हिंदी</option><option>English</option><option>भोजपुरी</option><option>اردو</option></select></div>
+<div><label for="format">वीडियो फॉर्मेट</label><select id="format"><option>YouTube Shorts (9:16)</option><option>Long Video (16:9)</option><option>Square (1:1)</option></select></div>
+<div><label for="style">वीडियो स्टाइल</label><select id="style"><option>3D Cartoon</option><option>Cinematic</option><option>Realistic</option><option>Animated Story</option></select></div>
+</div><button onclick="makePlan()">वीडियो प्लान तैयार करें</button>
+<p class="note">डेमो: यह अभी केवल स्क्रिप्ट/प्रोडक्शन प्लान का नमूना बनाता है। असली AI इमेज, आवाज़ और MP4 बनाने के लिए आगे AI सेवाएँ जोड़नी होंगी।</p>
+</div>
+<div class="cards">
+<div class="tile"><b>✦ AI Chat</b><span class="note">AI बातचीत — जल्द आ रहा है</span></div>
+<div class="tile"><b>▣ Photo Editing</b><span class="note">फोटो टूल — जल्द आ रहा है</span></div>
+<div class="tile"><b>▶ Video Maker</b><span class="note">Prompt-to-video — विकासाधीन</span></div>
+<div class="tile"><b>📚 Study Helper</b><span class="note">पढ़ाई में मदद — जल्द आ रहा है</span></div>
+</div>
+<div class="panel"><h2>आपका वीडियो प्लान</h2><div id="result">अपना प्रॉम्प्ट लिखकर बटन दबाएँ।</div></div>
+</main>
+<script>
+function makePlan(){
+ const p=document.getElementById('prompt').value.trim();
+ if(!p){document.getElementById('result').textContent='कृपया पहले अपना वीडियो प्रॉम्प्ट लिखें।';return;}
+ const d=document.getElementById('duration').value,l=document.getElementById('language').value,f=document.getElementById('format').value,s=document.getElementById('style').value;
+ document.getElementById('result').textContent=
+ 'आपका प्रोडक्शन प्लान तैयार है!\\n\\nविषय: '+p+'\\nलंबाई: '+d+'\\nभाषा: '+l+'\\nफॉर्मेट: '+f+'\\nस्टाइल: '+s+
+ '\\n\\nअगले निर्माण चरण:\\n1. कहानी और वॉइसओवर स्क्रिप्ट लिखें।\\n2. कहानी को दृश्यों में बाँटें।\\n3. हर दृश्य के लिए इमेज तैयार करें।\\n4. दृश्यों में एनीमेशन और आवाज़ जोड़ें।\\n5. संगीत, सबटाइटल और एडिटिंग करें।\\n6. अंतिम वीडियो MP4 में एक्सपोर्ट करें।\\n\\nध्यान दें: यह केवल डेमो प्लान है; अभी वास्तविक वीडियो फाइल नहीं बनी है।';
+}
+</script></body></html>
